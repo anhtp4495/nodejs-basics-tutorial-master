@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
-
+var os = require("os");
 var connection = mysql.createConnection({
   host: process.env.SQL_HOST,
   user: process.env.SQL_USER,
@@ -24,7 +24,7 @@ connection.query(strQuery, function(error, rows, fi) {
 });
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'NodeJs Sample', instance: process.env.HOSTNAME, condition: true, anyArray: [1,2,3] });
+  res.render('index', { title: 'NodeJs Sample', instance: os.hostname(), condition: true, anyArray: [1,2,3] });
 });
 
 router.get('/test/:message', function(req, res, next) {
