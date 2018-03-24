@@ -11,6 +11,7 @@ var connection = mysql.createConnection({
 connection.connect(function(error) {
   if (!!error){
      console.log("Connect to MySQL Server failed!");
+	 console.log("Continue ...");
   } else {
      console.log("Connect to MySQL Server successfully!");
   }
