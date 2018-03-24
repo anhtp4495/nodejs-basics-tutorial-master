@@ -24,7 +24,7 @@ connection.query(strQuery, function(error, rows, fi) {
 });
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'NodeJs Sample', condition: true, anyArray: [1,2,3] });
+  res.render('index', { title: 'NodeJs Sample', instance: process.env.HOSTNAME, condition: true, anyArray: [1,2,3] });
 });
 
 router.get('/test/:message', function(req, res, next) {
