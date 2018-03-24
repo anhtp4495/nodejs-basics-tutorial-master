@@ -10,9 +10,9 @@ var connection = mysql.createConnection({
 });
 connection.connect(function(error) {
   if (!!error){
-     console.log("Error");
+     console.log("Connect to MySQL Server failed!");
   } else {
-     console.log("Success");
+     console.log("Connect to MySQL Server successfully!");
   }
 });
 const strQuery = "CREATE TABLE IF NOT EXISTS `tblsample` ("
@@ -30,6 +30,7 @@ router.get('/', function(req, res, next) {
 router.get('/test/:message', function(req, res, next) {
 connection.query("select count(*) as count from `tblsample`", function(error, rows, fi) {
   if (!!error) {
+	res.render('test', {count: "Failed!", output: req.params.message});  
   } else {
     let count = rows[0].count;
     console.log(count);
